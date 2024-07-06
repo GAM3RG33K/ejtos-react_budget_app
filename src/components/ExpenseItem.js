@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { TiDelete, TiMinus, TiPlus, TiUserAdd } from 'react-icons/ti';
+import { TiMinus, TiPlus } from 'react-icons/ti';
 import { AppContext } from '../context/AppContext';
 
 const ExpenseItem = (props) => {
