@@ -87,6 +87,12 @@ const initialState = {
         { id: "IT", name: 'IT', cost: 500 },
         { id: "Misc", name: 'Misc', cost: 40 },
     ],
+    currencies: [
+        { symbol: '$', name: 'Dollar' },
+        { symbol: '£', name: 'Pound' },
+        { symbol: '€', name: 'Euro' },
+        { symbol: '₹', name: 'Rupee' },
+    ],
     currency: '£'
 };
 
@@ -114,7 +120,8 @@ export const AppProvider = (props) => {
                 budget: state.budget,
                 remaining: remaining,
                 dispatch,
-                currency: state.currency
+                currency: state.currency,
+                currencies: state.currencies
             }}
         >
             {props.children}

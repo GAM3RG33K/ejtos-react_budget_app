@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { AppContext } from '../context/AppContext';
 
 const AllocationForm = (props) => {
-    const { dispatch, remaining } = useContext(AppContext);
+    const { dispatch, remaining, currency } = useContext(AppContext);
 
     const [name, setName] = useState('');
     const [cost, setCost] = useState('');
@@ -11,7 +11,7 @@ const AllocationForm = (props) => {
     const submitEvent = () => {
 
         if (cost > remaining) {
-            alert("The value cannot exceed remaining funds £" + remaining);
+            alert(`The value cannot exceed remaining funds ${currency} ` + remaining);
             setCost("");
             return;
         }
@@ -35,6 +35,7 @@ const AllocationForm = (props) => {
 
     return (
         <div>
+            <h3 className='mt-3'>Change Allocation</h3>
             <div className='row'>
 
                 <div className="input-group mb-3" style={{}}>
@@ -60,8 +61,8 @@ const AllocationForm = (props) => {
                         <option value="Reduce" name="Reduce">Reduce</option>
                     </select>
 
-                    <div style={{ marginLeft: '4rem', marginTop: '2px'}}>
-                        £
+                    <div style={{ marginLeft: '4rem', marginTop: '2px' }}>
+                        {currency}
                         <input
                             required='required'
                             type='number'
@@ -71,9 +72,9 @@ const AllocationForm = (props) => {
                             onChange={(event) => setCost(event.target.value)}>
                         </input>
                     </div>
-                    
 
-                    <button className="btn btn-primary" onClick={submitEvent} style={{ marginLeft: '2rem', paddingTop: '2px', paddingBottom: '2px'}}>
+
+                    <button className="btn btn-primary" onClick={submitEvent} style={{ marginLeft: '2rem', paddingTop: '2px', paddingBottom: '2px' }}>
                         Save
                     </button>
                 </div>
